@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>测试（css实现半圆）</title>
+      <link href="2020/12/23/%E6%B5%8B%E8%AF%95%EF%BC%88css%E5%AE%9E%E7%8E%B0%E5%8D%8A%E5%9C%86%EF%BC%89/"/>
+      <url>2020/12/23/%E6%B5%8B%E8%AF%95%EF%BC%88css%E5%AE%9E%E7%8E%B0%E5%8D%8A%E5%9C%86%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>原理:左上、右上角是圆角，右下、左下角是直角:左上角、右上角的值为宽和高一样的值，右下角、左下角的值不变（等于0）；另外，因为还要设置高度值为原来高度的一半才是标准的半圆。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 上半圆 */</span></span><br><span class="line"><span class="selector-class">.semi-circle</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">50px</span>; </span><br><span class="line">  <span class="attribute">background-color</span>:<span class="number">#cb18f8</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>; <span class="comment">/* 左上、右上、右下、左下 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 下半圆 */</span></span><br><span class="line"><span class="selector-class">.semi-circle2</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">50px</span>; </span><br><span class="line">  <span class="attribute">background-color</span>:<span class="number">#cb18f8</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">50px</span> <span class="number">50px</span>; <span class="comment">/* 左上、右上、右下、左下 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 左半圆 */</span></span><br><span class="line"><span class="selector-class">.semi-circle3</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">background-color</span>:<span class="number">#cb18f8</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">50px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">50px</span>; <span class="comment">/* 左上、右上、右下、左下 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 右半圆 */</span></span><br><span class="line"><span class="selector-class">.semi-circle4</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">background-color</span>:<span class="number">#cb18f8</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">0</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>; <span class="comment">/* 左上、右上、右下、左下 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="2020/12/21/hello-world/"/>
       <url>2020/12/21/hello-world/</url>

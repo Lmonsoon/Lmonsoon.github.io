@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>Archives   | Monsoon</title>
+  <title>测试（css实现半圆）   | Monsoon</title>
 
   
     <link rel="apple-touch-icon" href="/images/b.png">
@@ -85,44 +85,126 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-    
-      
-        <!-- 第一篇文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2020</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="测试（css实现半圆）">
-        <div class="time-m-d">12-23</div>
-        <div class="title">
-          <a href="/2020/12/23/%E6%B5%8B%E8%AF%95%EF%BC%88css%E5%AE%9E%E7%8E%B0%E5%8D%8A%E5%9C%86%EF%BC%89/">
-            <span>测试（css实现半圆）</span>
-          </a>
-        </div>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">测试（css实现半圆）</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2020-12-23
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/css/" title="css">
+                    <b>#</b> css
+                  </a>
+                </span>
+                
+              </span>
+          
       </div>
-    
+      <div class="markdown-body">
+        <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>原理:左上、右上角是圆角，右下、左下角是直角:左上角、右上角的值为宽和高一样的值，右下角、左下角的值不变（等于0）；另外，因为还要设置高度值为原来高度的一半才是标准的半圆。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 上半圆 */</span></span><br><span class="line"><span class="selector-class">.semi-circle</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">50px</span>; </span><br><span class="line">  <span class="attribute">background-color</span>:<span class="number">#cb18f8</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>; <span class="comment">/* 左上、右上、右下、左下 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 下半圆 */</span></span><br><span class="line"><span class="selector-class">.semi-circle2</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">50px</span>; </span><br><span class="line">  <span class="attribute">background-color</span>:<span class="number">#cb18f8</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">50px</span> <span class="number">50px</span>; <span class="comment">/* 左上、右上、右下、左下 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 左半圆 */</span></span><br><span class="line"><span class="selector-class">.semi-circle3</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">background-color</span>:<span class="number">#cb18f8</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">50px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">50px</span>; <span class="comment">/* 左上、右上、右下、左下 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 右半圆 */</span></span><br><span class="line"><span class="selector-class">.semi-circle4</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">background-color</span>:<span class="number">#cb18f8</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>:<span class="number">0</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>; <span class="comment">/* 左上、右上、右下、左下 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
       
-      <div class="post-item" title="Hello World">
-        <div class="time-m-d">12-21</div>
-        <div class="title">
-          <a href="/2020/12/21/hello-world/">
-            <span>Hello World</span>
-          </a>
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/21/hello-world/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-23
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/css/" title="css">
+                        <b>#</b> css
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'eKfpaXEzxBf8iunsvyOyXsV2-gzGzoHsz',
+      appKey: '5kuxqnrBmPkhxcLFHdd2LW0P',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'en'
+    })
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         <div class="footer">
   <div class="social">
