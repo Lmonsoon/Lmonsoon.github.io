@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>BFC是什么？如何触发   | Monsoon</title>
+  <title>archive_a: 2021/1   | Monsoon</title>
 
   
     <link rel="apple-touch-icon" href="/images/b.png">
@@ -85,150 +85,71 @@
 
 
       <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
 
+<!-- last: 按年份把文章分组，当前遍历到的年份 -->
+<!-- now: 当前遍历到的文章的发布年份 -->
 
-
-  
-
-  
-
-  
-
-  
-  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-  <div class="container post-details" id="post-details">
-    <div class="post-content">
-      <div class="post-title">BFC是什么？如何触发</div>
-      <div class="post-attach">
-        <span class="post-pubtime">
-          <i class="iconfont icon-updatetime" title="Update time"></i>
-          2020-12-24
-        </span>
-        
-              <span class="post-tags">
-                <i class="iconfont icon-tags" title="Tags"></i>
-                
-                <span class="span--tag">
-                  <a href="/tags/css/" title="css">
-                    <b>#</b> css
-                  </a>
-                </span>
-                
-              </span>
-          
-      </div>
-      <div class="markdown-body">
-        <p><span style='color:Green;font-size:18px;font-weight:bold'>1.概念</span></p>
-<p><span style='color:red;font-size:16px;font-weight:bold'>BFC(Box Formatting context):</span>Box是CSS布局的对象和基本单位，BFC就是页面上的一个独立的容器，容器里面的子元素不会影响外面的元素。反之亦然。</p>
-<p>BFC布局规则</p>
-<ul>
-<li>内部的BOX会垂直方向放置；</li>
-<li>属于同一个BFC的两个相邻Box的margin会重叠；</li>
-<li>BFC的区域不会和float box重叠；</li>
-<li>是页面上的一个独立的容器，容器里面的子元素不会影响外面的元素。反之亦然；</li>
-<li>计算BFC的高度，浮动元素也参与计算。</li>
-</ul>
-<p><span style='color:Green;font-size:18px;font-weight:bold'>2.触发条件</span></p>
-<p><span style='color:red;font-size:16px;font-weight:bold'>触发条件介绍:</span></p>
-<ol>
-<li>根元素</li>
-<li>浮动元素（元素的float不是none）</li>
-<li>绝对定位元素（元素的 position为 absolute或 fixed）</li>
-<li>行内块元素（元素的display为 inline-block-）</li>
-<li>表格单元格（元素的display为 table-cell，HTML表<br>格单元格默认为该值）</li>
-<li>表格标题（元素的display为 table-caption-，HTML<br>表格标题默认为该值）</li>
-<li>匿名表格单元格元素（元素的 display为 table、 table–row、 table-group-row、 table-header- group、 table-footer-group（分别是 HTML table、<br>row、 tbody、 thead、 tfoot的默认属性）或 inline-<br> table）</li>
-<li>overflow值不为 visible的块元素</li>
-<li>display值为flow-root的元素</li>
-<li>contain值为 layout、 content或 paint的元素</li>
-<li>弹性元素（display为flex或 inline–flex元素的直接子<br>元素）</li>
-<li>网格元素（display为grid或 inline–grid元素的直接<br>子元素）</li>
-<li>多列容器（元素的column-count-或 column-width-<br>不为auto，包括 column-count-为1）</li>
-<li>column–span为all的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准<br>变更， Chrome bug）。</li>
-</ol>
-<p><span style='color:Green;font-size:18px;font-weight:bold'>3.应用场景</span></p>
-<p><span style='color:red;font-size:16px;font-weight:bold'>1.清除浮动；</span></p>
-<p><span style='color:red;font-size:16px;font-weight:bold'>2.阻止Margin重叠；</span></p>
-<p><span style='color:red;font-size:16px;font-weight:bold'>3.阻止元素被浮动元素覆盖；</span></p>
-<p><span style='color:red;font-size:16px;font-weight:bold'>4.自适应两栏布局。</span></p>
-
-      </div>
+<div class="container archives">
+  <div class="post-list">
+    
+    
       
-        <div class="prev-or-next">
-          <div class="post-foot-next">
-            
-              <a href="/2020/12/23/%E6%B5%8B%E8%AF%95%EF%BC%88css%E5%AE%9E%E7%8E%B0%E5%8D%8A%E5%9C%86%EF%BC%89/" target="_self">
-                <i class="iconfont icon-chevronleft"></i>
-                <span>Prev</span>
-              </a>
-            
-          </div>
-          <div class="post-attach">
-            <span class="post-pubtime">
-              <i class="iconfont icon-updatetime" title="Update time"></i>
-              2020-12-24
-            </span>
-            
-                  <span class="post-tags">
-                    <i class="iconfont icon-tags" title="Tags"></i>
-                    
-                    <span class="span--tag">
-                      <a href="/tags/css/" title="css">
-                        <b>#</b> css
-                      </a>
-                    </span>
-                    
-                  </span>
-              
-          </div>
-          <div class="post-foot-prev">
-            
-              <a href="/2021/01/13/js(1)%E7%AC%94%E8%AE%B0/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
-            
-          </div>
+        <!-- 第一篇文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2021</span>
+          </h2>
         </div>
       
-    </div>
+      <div class="post-item" title="js(1)笔记">
+        <div class="time-m-d">01-13</div>
+        <div class="title">
+          <a href="/2021/01/13/js(1)%E7%AC%94%E8%AE%B0/">
+            <span>js(1)笔记</span>
+          </a>
+        </div>
+      </div>
     
-
+      
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2020</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="BFC是什么？如何触发">
+        <div class="time-m-d">12-24</div>
+        <div class="title">
+          <a href="/2020/12/24/BFC%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91/">
+            <span>BFC是什么？如何触发</span>
+          </a>
+        </div>
+      </div>
     
-      <div class="comments-container">
-        
-
-
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
-  <div id="vcomments"></div>
-
-  <script>
-    new Valine({
-      el: '#vcomments',
-      appId: 'eKfpaXEzxBf8iunsvyOyXsV2-gzGzoHsz',
-      appKey: '5kuxqnrBmPkhxcLFHdd2LW0P',
-      placeholder: 'Welcome!',
-      avatar: 'retro',
-      lang: 'en'
-    })
-  </script>
-
-    <style>
-      .comments-container .v .vempty {
-        display: none!important;
-      }
-    </style>
-
-
-
-
+      
+      <div class="post-item" title="测试（css实现半圆）">
+        <div class="time-m-d">12-23</div>
+        <div class="title">
+          <a href="/2020/12/23/%E6%B5%8B%E8%AF%95%EF%BC%88css%E5%AE%9E%E7%8E%B0%E5%8D%8A%E5%9C%86%EF%BC%89/">
+            <span>测试（css实现半圆）</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="Hello World">
+        <div class="time-m-d">12-21</div>
+        <div class="title">
+          <a href="/2020/12/21/hello-world/">
+            <span>Hello World</span>
+          </a>
+        </div>
       </div>
     
   </div>
-
+</div>
 
         <div class="footer">
   <div class="social">
