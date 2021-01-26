@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>Tag   | Monsoon</title>
+  <title>nth-child &amp; nth-of-type   | Monsoon</title>
 
   
     <link rel="apple-touch-icon" href="/images/b.png">
@@ -89,21 +89,154 @@
 <!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
 
-  <!-- 标签页 url形式：https://yoursite/tags/ -->
-  <div class="container tag-index">
-    <div>
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li></ul>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">nth-child & nth-of-type</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-01-26
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/css/" title="css">
+                    <b>#</b> css
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h5 style="color:#33FFFD">例子</h5>
+
+<section>
+    <p>第一个标签</p>
+    <p>第二个标签</p>
+    <p>第三个标签</p>
+</section>
+<style>
+p:nth-child(2){color:red};
+p:nth-of-type(2){color:red};
+</style>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第一个标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第二个标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第三个标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-child(2)</span>&#123;<span class="attribute">color</span>:red&#125;;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(2)</span>&#123;<span class="attribute">color</span>:red&#125;;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在上面的代码中，两个选择器选中了同一个元素。都使得第二个P元素标签中的文字变成了红色。</p>
+<h5 style="color:#33FFFD">区别</h5>
+
+<p>虽然在的上面例子中两个选择器效果相同，但是两者还是有差别的。</p>
+<p style="color:red">第一个标签</p>
+<p style="color:blue">第二个标签</p>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第一个标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>第二个标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-child(2)</span>&#123;<span class="attribute">color</span>:red&#125;;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(2)</span>&#123;<span class="attribute">color</span>:blue&#125;;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div>
+    <h1>标题</h1>
+     <h2>副标题</h2>
+    <p>第一个标签</p>
+    <p style="color:green">第二个标签</p>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;h1&gt;标题&lt;&#x2F;h1&gt;</span><br><span class="line">     &lt;h2&gt;副标题&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;p&gt;第一个标签&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;第二个标签&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;section&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">p:nth-child(2)&#123;color:red&#125;;</span><br><span class="line">p:nth-of-type(2)&#123;color:green&#125;;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+p:nth-child(2)不会匹配任何元素，因为此时section的第二个元素并不是p标签。但是p:nth-of-type(2)仍然可以正常工作，因为它始终选择的是section中的第二个p元素。
+
+<h5 id="结论"><a href="#结论" class="headerlink" title="结论:"></a>结论:</h5><ul>
+<li>**e:nth-child (n)**选择同级元素的第n个为e的子元素</li>
+<li>**e:nth-of-type(n)**，选择同级元素中的第 n 个为e的同类元素</li>
+</ul>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/01/23/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-01-26
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/css/" title="css">
+                        <b>#</b> css
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">例子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">区别</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">副标题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-text">结论:</span></a></li></ol>
     </div>
   </div>
-  
 
   
+<script src="/js/catalog.js"></script>
 
-  
 
-  
 
-  
+
+    
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'eKfpaXEzxBf8iunsvyOyXsV2-gzGzoHsz',
+      appKey: '5kuxqnrBmPkhxcLFHdd2LW0P',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'en'
+    })
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
+      </div>
+    
+  </div>
+
 
         <div class="footer">
   <div class="social">
