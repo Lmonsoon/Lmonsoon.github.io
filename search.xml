@@ -4,13 +4,38 @@
   
     
     <entry>
+      <title>js笔记(事件)</title>
+      <link href="2021/01/30/js%E7%AC%94%E8%AE%B0-%E4%BA%8B%E4%BB%B6/"/>
+      <url>2021/01/30/js%E7%AC%94%E8%AE%B0-%E4%BA%8B%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<h5 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h5><p>1**.事件是由三部分组成，事件源   事件类型  事件处理程序     我们也称为事件三要素**</p><p>(1)事件源 事件被触发的对象     </p><p>(2)事件类型 如何触发事件   比如鼠标点击   鼠标经过  键盘按下</p><p>(3)事件处理程序   通过一个函数赋值的方式完成</p><p><strong>2.执行事件的步骤</strong></p><ol><li> 获取事件源</li><li> 注册事件 （绑定事件）</li><li> 添加事件处理程序 (采取函数赋值形式)</li></ol><p><strong>注册事件概述</strong></p><p>给元素添加事件，称为注册事件或者绑定事件。</p><p>注册事件有两种方式：传统方式和方法监听注册方式</p><p><strong>传统注册方式</strong></p><ul><li>利用on开头的事件onclick</li><li>  <code>&lt;button onclick=&quot;alert(&#39;hi&#39;)&quot;&gt;&lt;/button&gt;</code></li><li>btn.onclick=function(){}    //利用事件三要素</li><li>特点：注册事件的<strong>唯一性（同一个元素同一个事件只能设置一个处理函数，在最后注册的处理函数会覆盖前面注册的处理函数）</strong></li></ul><p><strong>方法监听注册方式</strong></p><ul><li>w3c标准 推荐方式</li><li>addEventListener()方法</li><li>IE9之前的IE不支持此方法，可以使用attachEvent()代替</li><li>特点：<strong>同一个元素同一个事件可以注册多个监听器（按照注册顺序依次执行）</strong></li></ul><p><strong>addEventListener()    事件监听方式</strong></p><p>​    <strong>eventTarget.addEventListener(type, listener , useCapture)</strong></p><p>eventTarget.addEventListener()方法将指定的监听器注册到eventTarget(目标对象）上，当该对象触发指定的事件时，就会执行事件外理函数。</p><ul><li>type：表示监听事件类型的字符串，click</li><li>listener：当所监听的事件类型触发时执行的函数</li><li>useCapture：决定冒泡（false）或者捕获（ture）。默认false</li></ul><p> <strong>attachEvent事件监听方式</strong></p><p><strong>eventTarget.attachEvent (eventNamewithon,callback)</strong></p><p>eventTarget.attachEvent ()方法将指定的监听器注册到eventrarget(目标对象）上，当该对象触发指定的事件时，指定的回调函数就会被执行。</p><p>该方法接收两个参数︰</p><p>eventNameWithon:事件类型字符串，比如onclick、onmouseover ，这里要带on</p><p>callback :事件处理函数，当目标触发事件时回调函数被调用</p><p><strong>删除事件（解绑事件）</strong></p><p>  <strong>1. 传统方式</strong></p><p>  eventTarget.onclick =null</p><p>   <strong>2.方法监听注册方式</strong></p><p>  eventTarget.removeEventListener(type,listener,useCapture)</p><p> eventTarget.detachEvent(eventNameWithon,callback)</p><p><strong>DOM事件流</strong></p><ul><li>事件流描述的是从页面中接收事件的顺序。</li><li>事件发生时会在元素节点之间按照特定的顺序传播，这个传播过程即DOM事件流。</li></ul><p>比如我们给一个div注册了点击事件∶</p><div>    <div style="float: left"><h6>    DOM事件流分为三个阶段        </h6>        <ul>            <li>捕获阶段</li>            <li>当前目标阶段</li>            <li>冒泡阶段</li>        </ul>    </div>    <div style="float: right">        <img src="js笔记-事件/e653d5fa6e844f9a803772445a639fd6.jpg" alt="img" style="zoom:80%  " />    </div></div>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>css选择器，优先级</title>
       <link href="2021/01/28/css%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%8C%E4%BC%98%E5%85%88%E7%BA%A7/"/>
       <url>2021/01/28/css%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%8C%E4%BC%98%E5%85%88%E7%BA%A7/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[  <h4>选择器类型</h4><table><thead><tr><th><strong>选择器</strong></th><th></th><th><strong>e.g.</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td>id选择器</td><td>#id</td><td>#header</td><td>选择id=”header”的所有元素</td></tr><tr><td>类选择器</td><td>.class</td><td>.message</td><td>选择class=”message”的所有元素</td></tr><tr><td>标签选择器</td><td>el</td><td>div</td><td>选择所有的div元素</td></tr><tr><td>属性选择器</td><td>[attribute]  [attribute=value]  …</td><td>[target]</td><td></td></tr><tr><td>伪元素选择器</td><td>::before, ::after,::first-letter,::first-line</td><td>p::before</td><td>在每个p元素内容之前插入内容</td></tr><tr><td>伪类</td><td>:link,:visited, :hover, :active, :focus</td><td>a:hover</td><td>选择鼠标指针位于a标签之上的链接</td></tr></tbody></table><p>通配选择符（*）关系选择符（+, &gt;, ~, ‘ ‘, ||）和 否定伪类（:not()）对优先级没有影响。（但是，在 :not() 内部声明的选择器会影响优先级）。</p><p>优先级：<code>!important</code> &gt; 内联样式 &gt; id选择器 &gt; 类、伪类、属性选择器 &gt; 标签、伪元素选择器&gt;通配符、子选择器、相邻选择器&gt;继承的样式</p><p>内联： 1000</p><p>id选择器：0100</p><p>类、伪类、属性选择器：0010</p><p>标签、伪元素选择器：0001</p><p>通用选择器（*）、子选择器（&gt;）、相邻兄弟选择器（+）、通用兄弟选择器（~）权重值为0</p><h4>!important </h4><p>当在一个样式声明中使用一个 <code>!important</code> 规则时，此声明将覆盖任何其他声明</p><p><code>!important</code> 与优先级无关，但它与最终的结果直接相关。</p><h4 id="样式的继承"><a href="#样式的继承" class="headerlink" title="样式的继承"></a>样式的继承</h4><p>像儿子可以继承父亲的财产一样，在CSS中，祖先元素上的样式也会别后代元素所继承，利用继承可以将一些基本的样式设置给祖先元素，这样所有的后代元素将会继承这些样式。继承时对开发的一种简化，通过继承我们可以将元素共有的样式统一设置给祖先元素，这样就只需要设置一次，就给所有的元素设置了样式。<br><strong>注：但是并不是所有的样式都会被子元素所继承，比如：背景相关的、边框相关的、定位相关的样式都不会被子元素所继承。具体情况需参考文档。</strong></p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
       
     </entry>
     
@@ -122,9 +147,9 @@
       
         <tags>
             
-            <tag> js </tag>
-            
             <tag> css </tag>
+            
+            <tag> js </tag>
             
         </tags>
       

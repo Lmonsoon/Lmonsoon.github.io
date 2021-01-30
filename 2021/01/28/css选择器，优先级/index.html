@@ -107,9 +107,80 @@
           2021-01-28
         </span>
         
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/css/" title="css">
+                    <b>#</b> css
+                  </a>
+                </span>
+                
+              </span>
+          
       </div>
       <div class="markdown-body">
-        
+          <h4>选择器类型</h4>
+
+<table>
+<thead>
+<tr>
+<th><strong>选择器</strong></th>
+<th></th>
+<th><strong>e.g.</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id选择器</td>
+<td>#id</td>
+<td>#header</td>
+<td>选择id=”header”的所有元素</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>.class</td>
+<td>.message</td>
+<td>选择class=”message”的所有元素</td>
+</tr>
+<tr>
+<td>标签选择器</td>
+<td>el</td>
+<td>div</td>
+<td>选择所有的div元素</td>
+</tr>
+<tr>
+<td>属性选择器</td>
+<td>[attribute]  [attribute=value]  …</td>
+<td>[target]</td>
+<td></td>
+</tr>
+<tr>
+<td>伪元素选择器</td>
+<td>::before, ::after,::first-letter,::first-line</td>
+<td>p::before</td>
+<td>在每个p元素内容之前插入内容</td>
+</tr>
+<tr>
+<td>伪类</td>
+<td>:link,:visited, :hover, :active, :focus</td>
+<td>a:hover</td>
+<td>选择鼠标指针位于a标签之上的链接</td>
+</tr>
+</tbody></table>
+<p>通配选择符（*）关系选择符（+, &gt;, ~, ‘ ‘, ||）和 否定伪类（:not()）对优先级没有影响。（但是，在 :not() 内部声明的选择器会影响优先级）。</p>
+<p>优先级：<code>!important</code> &gt; 内联样式 &gt; id选择器 &gt; 类、伪类、属性选择器 &gt; 标签、伪元素选择器&gt;通配符、子选择器、相邻选择器&gt;继承的样式</p>
+<p>内联： 1000</p>
+<p>id选择器：0100</p>
+<p>类、伪类、属性选择器：0010</p>
+<p>标签、伪元素选择器：0001</p>
+<p>通用选择器（*）、子选择器（&gt;）、相邻兄弟选择器（+）、通用兄弟选择器（~）权重值为0</p>
+<h4>!important </h4>
+
+<p>当在一个样式声明中使用一个 <code>!important</code> 规则时，此声明将覆盖任何其他声明</p>
+<p><code>!important</code> 与优先级无关，但它与最终的结果直接相关。</p>
+<h4 id="样式的继承"><a href="#样式的继承" class="headerlink" title="样式的继承"></a>样式的继承</h4><p>像儿子可以继承父亲的财产一样，在CSS中，祖先元素上的样式也会别后代元素所继承，利用继承可以将一些基本的样式设置给祖先元素，这样所有的后代元素将会继承这些样式。继承时对开发的一种简化，通过继承我们可以将元素共有的样式统一设置给祖先元素，这样就只需要设置一次，就给所有的元素设置了样式。<br><strong>注：但是并不是所有的样式都会被子元素所继承，比如：背景相关的、边框相关的、定位相关的样式都不会被子元素所继承。具体情况需参考文档。</strong></p>
+
       </div>
       
         <div class="prev-or-next">
@@ -127,14 +198,42 @@
               2021-01-28
             </span>
             
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/css/" title="css">
+                        <b>#</b> css
+                      </a>
+                    </span>
+                    
+                  </span>
+              
           </div>
           <div class="post-foot-prev">
+            
+              <a href="/2021/01/30/js%E7%AC%94%E8%AE%B0-%E4%BA%8B%E4%BB%B6/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
             
           </div>
         </div>
       
     </div>
     
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">选择器类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">!important </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text">样式的继承</span></a></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
       <div class="comments-container">

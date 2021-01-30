@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>archive_a: 2020/12   | Monsoon</title>
+  <title>js笔记(事件)   | Monsoon</title>
 
   
     <link rel="apple-touch-icon" href="/images/b.png">
@@ -85,151 +85,205 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-    
-      
-        <!-- 第一篇文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2021</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="js笔记(事件)">
-        <div class="time-m-d">01-30</div>
-        <div class="title">
-          <a href="/2021/01/30/js%E7%AC%94%E8%AE%B0-%E4%BA%8B%E4%BB%B6/">
-            <span>js笔记(事件)</span>
-          </a>
-        </div>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">js笔记(事件)</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-01-30
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/js/" title="js">
+                    <b>#</b> js
+                  </a>
+                </span>
+                
+              </span>
+          
       </div>
-    
-      
-      <div class="post-item" title="css选择器，优先级">
-        <div class="time-m-d">01-28</div>
-        <div class="title">
-          <a href="/2021/01/28/css%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%8C%E4%BC%98%E5%85%88%E7%BA%A7/">
-            <span>css选择器，优先级</span>
-          </a>
-        </div>
+      <div class="markdown-body">
+        <h5 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h5><p>1**.事件是由三部分组成，事件源   事件类型  事件处理程序     我们也称为事件三要素**</p>
+<p>(1)事件源 事件被触发的对象     </p>
+<p>(2)事件类型 如何触发事件   比如鼠标点击   鼠标经过  键盘按下</p>
+<p>(3)事件处理程序   通过一个函数赋值的方式完成</p>
+<p><strong>2.执行事件的步骤</strong></p>
+<ol>
+<li> 获取事件源</li>
+<li> 注册事件 （绑定事件）</li>
+<li> 添加事件处理程序 (采取函数赋值形式)</li>
+</ol>
+<p><strong>注册事件概述</strong></p>
+<p>给元素添加事件，称为注册事件或者绑定事件。</p>
+<p>注册事件有两种方式：传统方式和方法监听注册方式</p>
+<p><strong>传统注册方式</strong></p>
+<ul>
+<li>利用on开头的事件onclick</li>
+<li>  <code>&lt;button onclick=&quot;alert(&#39;hi&#39;)&quot;&gt;&lt;/button&gt;</code></li>
+<li>btn.onclick=function(){}    //利用事件三要素</li>
+<li>特点：注册事件的<strong>唯一性（同一个元素同一个事件只能设置一个处理函数，在最后注册的处理函数会覆盖前面注册的处理函数）</strong></li>
+</ul>
+<p><strong>方法监听注册方式</strong></p>
+<ul>
+<li>w3c标准 推荐方式</li>
+<li>addEventListener()方法</li>
+<li>IE9之前的IE不支持此方法，可以使用attachEvent()代替</li>
+<li>特点：<strong>同一个元素同一个事件可以注册多个监听器（按照注册顺序依次执行）</strong></li>
+</ul>
+<p><strong>addEventListener()    事件监听方式</strong></p>
+<p>​    <strong>eventTarget.addEventListener(type, listener , useCapture)</strong></p>
+<p>eventTarget.addEventListener()方法将指定的监听器注册到eventTarget(目标对象）上，当该对象触发指定的事件时，就会执行事件外理函数。</p>
+<ul>
+<li>type：表示监听事件类型的字符串，click</li>
+<li>listener：当所监听的事件类型触发时执行的函数</li>
+<li>useCapture：决定冒泡（false）或者捕获（ture）。默认false</li>
+</ul>
+<p> <strong>attachEvent事件监听方式</strong></p>
+<p><strong>eventTarget.attachEvent (eventNamewithon,callback)</strong></p>
+<p>eventTarget.attachEvent ()方法将指定的监听器注册到eventrarget(目标对象）上，当该对象触发指定的事件时，指定的回调函数就会被执行。</p>
+<p>该方法接收两个参数︰</p>
+<p>eventNameWithon:事件类型字符串，比如onclick、onmouseover ，这里要带on</p>
+<p>callback :事件处理函数，当目标触发事件时回调函数被调用</p>
+<p><strong>删除事件（解绑事件）</strong></p>
+<p>  <strong>1. 传统方式</strong></p>
+<p>  eventTarget.onclick =null</p>
+<p>   <strong>2.方法监听注册方式</strong></p>
+<p>  eventTarget.removeEventListener(type,listener,useCapture)</p>
+<p> eventTarget.detachEvent(eventNameWithon,callback)</p>
+<p><strong>DOM事件流</strong></p>
+<ul>
+<li>事件流描述的是从页面中接收事件的顺序。</li>
+<li>事件发生时会在元素节点之间按照特定的顺序传播，这个传播过程即DOM事件流。</li>
+</ul>
+<p>比如我们给一个div注册了点击事件∶</p>
+<div>
+    <div style="float: left">
+<h6>
+    DOM事件流分为三个阶段
+        </h6>
+        <ul>
+            <li>捕获阶段</li>
+            <li>当前目标阶段</li>
+            <li>冒泡阶段</li>
+        </ul>
+    </div>
+    <div style="float: right">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="js笔记-事件/e653d5fa6e844f9a803772445a639fd6.jpg" alt="img" style="zoom:80%  " />
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/01/28/css%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%8C%E4%BC%98%E5%85%88%E7%BA%A7/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-01-30
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/js/" title="js">
+                        <b>#</b> js
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
     
-      
-      <div class="post-item" title="包装对象">
-        <div class="time-m-d">01-27</div>
-        <div class="title">
-          <a href="/2021/01/27/%E5%8C%85%E8%A3%85%E5%AF%B9%E8%B1%A1/">
-            <span>包装对象</span>
-          </a>
-        </div>
-      </div>
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link"><span class="toc-text">
+    DOM事件流分为三个阶段
+        </span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
-      
-      <div class="post-item" title="nth-child & nth-of-type">
-        <div class="time-m-d">01-26</div>
-        <div class="title">
-          <a href="/2021/01/26/nth-child-nth-of-type/">
-            <span>nth-child & nth-of-type</span>
-          </a>
-        </div>
-      </div>
-    
-      
-      <div class="post-item" title="JS数据类型判断">
-        <div class="time-m-d">01-23</div>
-        <div class="title">
-          <a href="/2021/01/23/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/">
-            <span>JS数据类型判断</span>
-          </a>
-        </div>
-      </div>
-    
-      
-      <div class="post-item" title="作用域">
-        <div class="time-m-d">01-19</div>
-        <div class="title">
-          <a href="/2021/01/19/%E4%BD%9C%E7%94%A8%E5%9F%9F/">
-            <span>作用域</span>
-          </a>
-        </div>
-      </div>
-    
-      
-      <div class="post-item" title="三列布局">
-        <div class="time-m-d">01-18</div>
-        <div class="title">
-          <a href="/2021/01/18/%E4%B8%89%E5%88%97%E5%B8%83%E5%B1%80/">
-            <span>三列布局</span>
-          </a>
-        </div>
-      </div>
-    
-      
-      <div class="post-item" title="瀑布流布局">
-        <div class="time-m-d">01-16</div>
-        <div class="title">
-          <a href="/2021/01/16/%E7%80%91%E5%B8%83%E6%B5%81%E5%B8%83%E5%B1%80/">
-            <span>瀑布流布局</span>
-          </a>
-        </div>
-      </div>
-    
-      
-      <div class="post-item" title="js(1)笔记">
-        <div class="time-m-d">01-13</div>
-        <div class="title">
-          <a href="/2021/01/13/js(1)%E7%AC%94%E8%AE%B0/">
-            <span>js(1)笔记</span>
-          </a>
-        </div>
-      </div>
-    
-      
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2020</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="BFC是什么？如何触发">
-        <div class="time-m-d">12-24</div>
-        <div class="title">
-          <a href="/2020/12/24/BFC%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91/">
-            <span>BFC是什么？如何触发</span>
-          </a>
-        </div>
-      </div>
-    
-      
-      <div class="post-item" title="测试（css实现半圆）">
-        <div class="time-m-d">12-23</div>
-        <div class="title">
-          <a href="/2020/12/23/%E6%B5%8B%E8%AF%95%EF%BC%88css%E5%AE%9E%E7%8E%B0%E5%8D%8A%E5%9C%86%EF%BC%89/">
-            <span>测试（css实现半圆）</span>
-          </a>
-        </div>
-      </div>
-    
-      
-      <div class="post-item" title="Hello World">
-        <div class="time-m-d">12-21</div>
-        <div class="title">
-          <a href="/2020/12/21/hello-world/">
-            <span>Hello World</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'eKfpaXEzxBf8iunsvyOyXsV2-gzGzoHsz',
+      appKey: '5kuxqnrBmPkhxcLFHdd2LW0P',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'en'
+    })
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         <div class="footer">
   <div class="social">
