@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>闭包   | Monsoon</title>
+  <title>archive_a: 2021/6   | Monsoon</title>
 
   
     <link rel="apple-touch-icon" href="/images/b.png">
@@ -85,164 +85,201 @@
 
 
       <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
 
+<!-- last: 按年份把文章分组，当前遍历到的年份 -->
+<!-- now: 当前遍历到的文章的发布年份 -->
 
-
-  
-
-  
-
-  
-
-  
-  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-  <div class="container post-details" id="post-details">
-    <div class="post-content">
-      <div class="post-title">闭包</div>
-      <div class="post-attach">
-        <span class="post-pubtime">
-          <i class="iconfont icon-updatetime" title="Update time"></i>
-          2021-05-17
-        </span>
-        
-              <span class="post-tags">
-                <i class="iconfont icon-tags" title="Tags"></i>
-                
-                <span class="span--tag">
-                  <a href="/tags/js/" title="js">
-                    <b>#</b> js
-                  </a>
-                </span>
-                
-              </span>
-          
-      </div>
-      <div class="markdown-body">
-        <h1 id="JavaScript闭包"><a href="#JavaScript闭包" class="headerlink" title="JavaScript闭包"></a>JavaScript闭包</h1><p>​          <strong>闭包（closure）指有权访问另一个函数作用域中变量的函数。</strong></p>
-<p>​           <strong>一个作用域可以访问另外一个函数的局部变量</strong></p>
-<p>​           <strong>我们function外面的作用域可以访问function内部的局部变量</strong></p>
-<p>​            <strong>闭包的主要作用:延伸了变量的作用范围</strong></p>
-<p><strong>1)什么是闭包</strong></p>
-<p>​     函数执行后返回结果是一个内部函数，并被外部变量所引用，如果内部函数持有被执行函数作用域的变量，即形成了闭包。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">10</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n =<span class="number">20</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       n++;</span><br><span class="line">       <span class="built_in">console</span>.log(n)</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = fn()</span><br><span class="line">x() <span class="comment">// 21</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>​     可以在内部函数访问到外部函数作用域。使用闭包，一可以读取函数中的变量，二可以将函数中的变量存储在内存中，保护变量不被污染。而正因闭包会把函数中的变量值存储在内存中，会对内存有消耗，所以不能滥用闭包，否则会影响网页性能，造成内存泄漏。当不需要使用闭包时，要及时释放内存，可将内层函数对象的变量赋值为null。</p>
-<p><strong>2)闭包原理</strong></p>
-<p><strong>函数执行分成两个阶段(预编译阶段和执行阶段)。</strong></p>
-<ul>
-<li><p>在预编译阶段，如果发现内部函数使用了外部函数的变量，则会在内存中创建一个“闭包”对象并保存对应变量值，如果已存在“闭包”，则只需要增加对应属性值即可。</p>
-</li>
-<li><p>执行完后，函数执行上下文会被销毁，函数对“闭包”对象的引用也会被销毁，但其内部函数还持用该“闭包”的引用，所以内部函数可以继续使用“外部函数”中的变量利用了函数作用域链的特性，一个函数内部定义的函数会将包含外部函数的活动对象添加到它的作用域链中，函数执行完毕，其执行作用域链销毁，但因内部函数的作用域链仍然在引用这个活动对象，所以其活动对象不会被销毁，自到内部函数被销毁后才被销毁。</p>
-</li>
-</ul>
-<p><strong>3)优点</strong></p>
-<ul>
-<li><p>可以从内部函数访问外部函数的作用域中的变量，且访问到的变量长期扎在内存中，可供之后使用</p>
-</li>
-<li><p>避免变量污染全局</p>
-</li>
-<li><p>把变量存到独立的作用域，作为私有成员存在</p>
-</li>
-</ul>
-<p><strong>4）缺点</strong></p>
-<ul>
-<li><p>对内存消耗有负面影响。因内部函数保存了对外部变量的引用，导致无法被垃圾回收，增大内存使用量，所以使用不当会导致内存泄漏</p>
-</li>
-<li><p>对处理速度具有负面影响。闭包的层级决定了引用的外部变量在查找时经过的作用域链长度</p>
-</li>
-</ul>
-<ul>
-<li>可能获取到意外的值(captured value)</li>
-</ul>
-
-      </div>
+<div class="container archives">
+  <div class="post-list">
+    
+    
       
-        <div class="prev-or-next">
-          <div class="post-foot-next">
-            
-              <a href="/2021/05/13/inline%E5%85%83%E7%B4%A0%E7%9A%84%E9%97%B4%E8%B7%9D%E9%97%AE%E9%A2%98/" target="_self">
-                <i class="iconfont icon-chevronleft"></i>
-                <span>Prev</span>
-              </a>
-            
-          </div>
-          <div class="post-attach">
-            <span class="post-pubtime">
-              <i class="iconfont icon-updatetime" title="Update time"></i>
-              2021-05-17
-            </span>
-            
-                  <span class="post-tags">
-                    <i class="iconfont icon-tags" title="Tags"></i>
-                    
-                    <span class="span--tag">
-                      <a href="/tags/js/" title="js">
-                        <b>#</b> js
-                      </a>
-                    </span>
-                    
-                  </span>
-              
-          </div>
-          <div class="post-foot-prev">
-            
-              <a href="/2021/06/15/%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
-            
-          </div>
+        <!-- 第一篇文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2021</span>
+          </h2>
         </div>
       
-    </div>
+      <div class="post-item" title="图片懒加载">
+        <div class="time-m-d">06-16</div>
+        <div class="title">
+          <a href="/2021/06/16/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">
+            <span>图片懒加载</span>
+          </a>
+        </div>
+      </div>
     
-  <div class="post-catalog" id="catalog">
-    <div class="title">Contents</div>
-    <div class="catalog-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript%E9%97%AD%E5%8C%85"><span class="toc-text">JavaScript闭包</span></a></li></ol>
-    </div>
-  </div>
-
-  
-<script src="/js/catalog.js"></script>
-
-
-
-
+      
+      <div class="post-item" title="隐式类型转换">
+        <div class="time-m-d">06-15</div>
+        <div class="title">
+          <a href="/2021/06/15/%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+            <span>隐式类型转换</span>
+          </a>
+        </div>
+      </div>
     
-      <div class="comments-container">
-        
-
-
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
-  <div id="vcomments"></div>
-
-  <script>
-    new Valine({
-      el: '#vcomments',
-      appId: 'eKfpaXEzxBf8iunsvyOyXsV2-gzGzoHsz',
-      appKey: '5kuxqnrBmPkhxcLFHdd2LW0P',
-      placeholder: 'Welcome!',
-      avatar: 'retro',
-      lang: 'en'
-    })
-  </script>
-
-    <style>
-      .comments-container .v .vempty {
-        display: none!important;
-      }
-    </style>
-
-
-
-
+      
+      <div class="post-item" title="闭包">
+        <div class="time-m-d">05-17</div>
+        <div class="title">
+          <a href="/2021/05/17/%E9%97%AD%E5%8C%85/">
+            <span>闭包</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="inline元素的间距问题">
+        <div class="time-m-d">05-13</div>
+        <div class="title">
+          <a href="/2021/05/13/inline%E5%85%83%E7%B4%A0%E7%9A%84%E9%97%B4%E8%B7%9D%E9%97%AE%E9%A2%98/">
+            <span>inline元素的间距问题</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="css3渐变">
+        <div class="time-m-d">05-07</div>
+        <div class="title">
+          <a href="/2021/05/07/css3%E6%B8%90%E5%8F%98/">
+            <span>css3渐变</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="js笔记(事件)">
+        <div class="time-m-d">01-30</div>
+        <div class="title">
+          <a href="/2021/01/30/js%E7%AC%94%E8%AE%B0-%E4%BA%8B%E4%BB%B6/">
+            <span>js笔记(事件)</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="css选择器，优先级">
+        <div class="time-m-d">01-28</div>
+        <div class="title">
+          <a href="/2021/01/28/css%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%8C%E4%BC%98%E5%85%88%E7%BA%A7/">
+            <span>css选择器，优先级</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="包装对象">
+        <div class="time-m-d">01-27</div>
+        <div class="title">
+          <a href="/2021/01/27/%E5%8C%85%E8%A3%85%E5%AF%B9%E8%B1%A1/">
+            <span>包装对象</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="nth-child & nth-of-type">
+        <div class="time-m-d">01-26</div>
+        <div class="title">
+          <a href="/2021/01/26/nth-child-nth-of-type/">
+            <span>nth-child & nth-of-type</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="JS数据类型判断">
+        <div class="time-m-d">01-23</div>
+        <div class="title">
+          <a href="/2021/01/23/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/">
+            <span>JS数据类型判断</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="作用域">
+        <div class="time-m-d">01-19</div>
+        <div class="title">
+          <a href="/2021/01/19/%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+            <span>作用域</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="三列布局">
+        <div class="time-m-d">01-18</div>
+        <div class="title">
+          <a href="/2021/01/18/%E4%B8%89%E5%88%97%E5%B8%83%E5%B1%80/">
+            <span>三列布局</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="瀑布流布局">
+        <div class="time-m-d">01-16</div>
+        <div class="title">
+          <a href="/2021/01/16/%E7%80%91%E5%B8%83%E6%B5%81%E5%B8%83%E5%B1%80/">
+            <span>瀑布流布局</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="js(1)笔记">
+        <div class="time-m-d">01-13</div>
+        <div class="title">
+          <a href="/2021/01/13/js(1)%E7%AC%94%E8%AE%B0/">
+            <span>js(1)笔记</span>
+          </a>
+        </div>
+      </div>
+    
+      
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2020</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="BFC是什么？如何触发">
+        <div class="time-m-d">12-24</div>
+        <div class="title">
+          <a href="/2020/12/24/BFC%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91/">
+            <span>BFC是什么？如何触发</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="测试（css实现半圆）">
+        <div class="time-m-d">12-23</div>
+        <div class="title">
+          <a href="/2020/12/23/%E6%B5%8B%E8%AF%95%EF%BC%88css%E5%AE%9E%E7%8E%B0%E5%8D%8A%E5%9C%86%EF%BC%89/">
+            <span>测试（css实现半圆）</span>
+          </a>
+        </div>
+      </div>
+    
+      
+      <div class="post-item" title="Hello World">
+        <div class="time-m-d">12-21</div>
+        <div class="title">
+          <a href="/2020/12/21/hello-world/">
+            <span>Hello World</span>
+          </a>
+        </div>
       </div>
     
   </div>
-
+</div>
 
         <div class="footer">
   <div class="social">

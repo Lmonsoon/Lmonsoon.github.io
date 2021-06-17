@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>闭包   | Monsoon</title>
+  <title>图片懒加载   | Monsoon</title>
 
   
     <link rel="apple-touch-icon" href="/images/b.png">
@@ -100,11 +100,11 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">闭包</div>
+      <div class="post-title">图片懒加载</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime" title="Update time"></i>
-          2021-05-17
+          2021-06-16
         </span>
         
               <span class="post-tags">
@@ -120,48 +120,24 @@
           
       </div>
       <div class="markdown-body">
-        <h1 id="JavaScript闭包"><a href="#JavaScript闭包" class="headerlink" title="JavaScript闭包"></a>JavaScript闭包</h1><p>​          <strong>闭包（closure）指有权访问另一个函数作用域中变量的函数。</strong></p>
-<p>​           <strong>一个作用域可以访问另外一个函数的局部变量</strong></p>
-<p>​           <strong>我们function外面的作用域可以访问function内部的局部变量</strong></p>
-<p>​            <strong>闭包的主要作用:延伸了变量的作用范围</strong></p>
-<p><strong>1)什么是闭包</strong></p>
-<p>​     函数执行后返回结果是一个内部函数，并被外部变量所引用，如果内部函数持有被执行函数作用域的变量，即形成了闭包。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">10</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n =<span class="number">20</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       n++;</span><br><span class="line">       <span class="built_in">console</span>.log(n)</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = fn()</span><br><span class="line">x() <span class="comment">// 21</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>​     可以在内部函数访问到外部函数作用域。使用闭包，一可以读取函数中的变量，二可以将函数中的变量存储在内存中，保护变量不被污染。而正因闭包会把函数中的变量值存储在内存中，会对内存有消耗，所以不能滥用闭包，否则会影响网页性能，造成内存泄漏。当不需要使用闭包时，要及时释放内存，可将内层函数对象的变量赋值为null。</p>
-<p><strong>2)闭包原理</strong></p>
-<p><strong>函数执行分成两个阶段(预编译阶段和执行阶段)。</strong></p>
-<ul>
-<li><p>在预编译阶段，如果发现内部函数使用了外部函数的变量，则会在内存中创建一个“闭包”对象并保存对应变量值，如果已存在“闭包”，则只需要增加对应属性值即可。</p>
-</li>
-<li><p>执行完后，函数执行上下文会被销毁，函数对“闭包”对象的引用也会被销毁，但其内部函数还持用该“闭包”的引用，所以内部函数可以继续使用“外部函数”中的变量利用了函数作用域链的特性，一个函数内部定义的函数会将包含外部函数的活动对象添加到它的作用域链中，函数执行完毕，其执行作用域链销毁，但因内部函数的作用域链仍然在引用这个活动对象，所以其活动对象不会被销毁，自到内部函数被销毁后才被销毁。</p>
-</li>
-</ul>
-<p><strong>3)优点</strong></p>
-<ul>
-<li><p>可以从内部函数访问外部函数的作用域中的变量，且访问到的变量长期扎在内存中，可供之后使用</p>
-</li>
-<li><p>避免变量污染全局</p>
-</li>
-<li><p>把变量存到独立的作用域，作为私有成员存在</p>
-</li>
-</ul>
-<p><strong>4）缺点</strong></p>
-<ul>
-<li><p>对内存消耗有负面影响。因内部函数保存了对外部变量的引用，导致无法被垃圾回收，增大内存使用量，所以使用不当会导致内存泄漏</p>
-</li>
-<li><p>对处理速度具有负面影响。闭包的层级决定了引用的外部变量在查找时经过的作用域链长度</p>
-</li>
-</ul>
-<ul>
-<li>可能获取到意外的值(captured value)</li>
-</ul>
+        <h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><h3 id="什么是懒加载"><a href="#什么是懒加载" class="headerlink" title="什么是懒加载"></a>什么是懒加载</h3><p>懒加载其实就是延迟加载，是一种对网页性能优化的方式，比如当访问一个页面的时候，优先显示可视区域的图片而不一次性加载所有图片，当需要显示的时候再发送图片请求，避免打开网页时加载过多资源。</p>
+<h3 id="什么时候用懒加载"><a href="#什么时候用懒加载" class="headerlink" title="什么时候用懒加载"></a>什么时候用懒加载</h3><p>当页面中需要一次性载入很多图片的时候，往往都是需要用懒加载的。</p>
+<h3 id="懒加载原理"><a href="#懒加载原理" class="headerlink" title="懒加载原理"></a>懒加载原理</h3><p><code>&lt;img&gt;</code>标签有一个属性是<code>src</code>，用来表示图像的URL，当这个属性的值不为空时，浏览器就会根据这个值发送请求。如果没有<code>src</code>属性，就不会发送请求。</p>
+<p>可以先不给<code>&lt;img&gt;</code>设置<code>src</code>，把图片真正的URL放在另一个属性<code>data-src</code>中，在需要的时候也就是图片进入可视区域的之前，将URL取出放到<code>src</code>中。</p>
+<h3 id="实现之前了解一个API"><a href="#实现之前了解一个API" class="headerlink" title="实现之前了解一个API"></a>实现之前了解一个API</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getBoundingClientRect()&#x2F;&#x2F;获取元素的大小及位置</span><br></pre></td></tr></table></figure>
+<p><strong>MDN的解释：</strong></p>
+<p><strong><code>Element.getBoundingClientRect()</code></strong> 方法返回元素的大小及其相对于视口的位置。</p>
+<p>如果是标准盒子模型，元素的尺寸等于**<code>width/height</code> + <code>padding</code> + <code>border-width</code><strong>的总和。如果</strong><code>box-sizing: border-box</code>**，元素的的尺寸等于 **<code>width/height</code>**。</p>
+<img src = 'https://ftp.bmp.ovh/imgs/2021/03/017fa6d84f48fc6d.png' />
+
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        img &#123;</span><br><span class="line">            display: block;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 300px;</span><br><span class="line">            margin-bottom: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner1.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner2.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner3.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner4.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner5.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner1.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner2.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner3.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner4.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner5.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner1.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner2.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner3.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner4.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner5.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner1.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner2.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner3.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner4.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;img data-src&#x3D;&quot;.&#x2F;images&#x2F;banner5.jpg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        class LazyLoading &#123;</span><br><span class="line">            constructor(arr) &#123;</span><br><span class="line">                    this.arr &#x3D; arr</span><br><span class="line">                &#125;</span><br><span class="line">                &#x2F;&#x2F;当图片出现在可视区域100px的位置图片开始加载</span><br><span class="line">            isshow(el) &#123;</span><br><span class="line">                    let obj &#x3D; el.getBoundingClientRect()</span><br><span class="line">                    let clienttop &#x3D; window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight</span><br><span class="line">                    return obj.top &lt; clienttop + 100</span><br><span class="line">                &#125;</span><br><span class="line">                &#x2F;&#x2F;遍历元素节点</span><br><span class="line">            chek() &#123;</span><br><span class="line">                    this.arr.forEach(val &#x3D;&gt; &#123;</span><br><span class="line">                        if (this.isshow(val)) &#123;</span><br><span class="line">                            this.loadimg(val)</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">                &#x2F;&#x2F;加载图片</span><br><span class="line">            loadimg(el) &#123;</span><br><span class="line">                if (!el.src) &#123;</span><br><span class="line">                    el.src &#x3D; el.getAttribute(&quot;data-src&quot;)</span><br><span class="line">                    console.dir(el.dataset.src);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        onload &#x3D; onscroll &#x3D; function() &#123;</span><br><span class="line">            const imgs &#x3D; document.querySelectorAll(&#39;img&#39;)</span><br><span class="line">            new LazyLoading(imgs).chek()</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2021/05/13/inline%E5%85%83%E7%B4%A0%E7%9A%84%E9%97%B4%E8%B7%9D%E9%97%AE%E9%A2%98/" target="_self">
+              <a href="/2021/06/15/%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -170,7 +146,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime" title="Update time"></i>
-              2021-05-17
+              2021-06-16
             </span>
             
                   <span class="post-tags">
@@ -187,11 +163,6 @@
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2021/06/15/%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
-            
           </div>
         </div>
       
@@ -200,7 +171,7 @@
   <div class="post-catalog" id="catalog">
     <div class="title">Contents</div>
     <div class="catalog-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript%E9%97%AD%E5%8C%85"><span class="toc-text">JavaScript闭包</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">懒加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">什么是懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E7%94%A8%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">什么时候用懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86"><span class="toc-text">懒加载原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B9%8B%E5%89%8D%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%AAAPI"><span class="toc-text">实现之前了解一个API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a></li></ol></li></ol></li></ol>
     </div>
   </div>
 
